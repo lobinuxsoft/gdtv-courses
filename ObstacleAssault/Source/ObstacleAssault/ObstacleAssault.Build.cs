@@ -8,7 +8,8 @@ public class ObstacleAssault : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
-		MinFilesUsingPrecompiledHeaderOverride = 1;
+    IWYUSupport = IWYUSupport.Full;
+    bEnableExceptions = true;
 
 		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore" });
 

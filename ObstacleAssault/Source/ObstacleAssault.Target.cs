@@ -8,7 +8,9 @@ public class ObstacleAssaultTarget : TargetRules
 	public ObstacleAssaultTarget(TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Game;
-		DefaultBuildSettings = BuildSettingsVersion.V4;
+    bUseUnityBuild = false;
+    bUsePCHFiles = false;
+		DefaultBuildSettings = BuildSettingsVersion.Latest;
 
 		ExtraModuleNames.AddRange( new string[] { "ObstacleAssault" } );
 	}
