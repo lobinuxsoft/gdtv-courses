@@ -1,6 +1,4 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "MovingPlatform.h"
 
 // Sets default values
@@ -38,6 +36,8 @@ void AMovingPlatform::Tick(float DeltaTime)
 
   if(DistanceMove > MoveDistance)
   {
+    float OverShoot = DistanceMove - MoveDistance;
+    UE_LOG(LogTemp, Display, TEXT("%s -> Over Shoot: %f"), *GetName(), OverShoot);
     FVector MoveDirection = PlatformVelocity.GetSafeNormal();
     StartLocation = StartLocation + MoveDirection * MoveDistance;
     SetActorLocation(StartLocation);
