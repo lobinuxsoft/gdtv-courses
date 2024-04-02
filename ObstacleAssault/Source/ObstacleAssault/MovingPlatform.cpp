@@ -6,7 +6,6 @@ AMovingPlatform::AMovingPlatform()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
 }
 
 // Called when the game starts or when spawned
@@ -28,23 +27,23 @@ void AMovingPlatform::Tick(float DeltaTime)
 
 void AMovingPlatform::MovePlatform(float DeltaTime)
 {
-  FVector CurrentLocation = GetActorLocation();
-  CurrentLocation += PlatformVelocity * DeltaTime;
-  SetActorLocation(CurrentLocation);
-  float DistanceMove = FVector::Dist(CurrentLocation, StartLocation);
-
-  if(DistanceMove > MoveDistance)
+  if(ShouldPlatformReturn())
   {
-    float OverShoot = DistanceMove - MoveDistance;
-    UE_LOG(LogTemp, Display, TEXT("%s -> Over Shoot: %f"), *GetName(), OverShoot);
     FVector MoveDirection = PlatformVelocity.GetSafeNormal();
     StartLocation = StartLocation + MoveDirection * MoveDistance;
     SetActorLocation(StartLocation);
     PlatformVelocity = -PlatformVelocity;
   }
+  else
+  {
+    FVector CurrentLocation = GetActorLocation();
+    CurrentLocation += PlatformVelocity * DeltaTime;
+    SetActorLocation(CurrentLocation);
+  }
 }
 
-void AMovingPlatform::RotatePlatform(float DeltaTime)
-{
-  UE_LOG(LogTemp, Display, TEXT("%s -> Rotating... %f"), *GetName(), DeltaTime);
-}
+void AMovingPlatform::RotatePlatform(float DeltaTime) { AddActorLocalRotation(RotationVelocity * DeltaTime); }
+
+bool AMovingPlatform::ShouldPlatformReturn() const { return GetDistanceMove() > MoveDistance; }
+
+float AMovingPlatform::GetDistanceMove() const { return FVector::Dist(StartLocation, GetActorLocation()); }

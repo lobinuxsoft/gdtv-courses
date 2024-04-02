@@ -25,11 +25,14 @@ public:
 
 private:
 
-  UPROPERTY(EditAnywhere, Category = "Moving Platform")
+  UPROPERTY(EditAnywhere, Category = "Moving")
   FVector PlatformVelocity{FVector(100, 0, 0)};
 
-  UPROPERTY(EditAnywhere, Category = "Moving Platform")
+  UPROPERTY(EditAnywhere, Category = "Moving")
   float MoveDistance{100};
+
+  UPROPERTY(EditAnywhere, Category="Rotation")
+  FRotator RotationVelocity;
 
   FVector StartLocation;
 
@@ -44,4 +47,7 @@ private:
    * @param DeltaTime time between frames.
    */
   void RotatePlatform(float DeltaTime);
+
+  FORCEINLINE bool ShouldPlatformReturn() const;
+  FORCEINLINE float GetDistanceMove() const;
 };
