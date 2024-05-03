@@ -1,0 +1,42 @@
+[
+	{
+		"file": "/home/lobinux/Documentos/Repos/gdtv-courses/ObstacleAssault/Source/ObstacleAssault/MovingPlatform.cpp",
+		"arguments": [
+			"/home/lobinux/.local/share/UnrealEngine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v22_clang-16.0.6-centos7/x86_64-unknown-linux-gnu/bin/clang++",
+			"@/home/lobinux/Documentos/Repos/gdtv-courses/ObstacleAssault/.vscode/compileCommands_ObstacleAssault/ObstacleAssault.1.rsp"
+		],
+		"directory": "/home/lobinux/.local/share/UnrealEngine/Engine/Source"
+	},
+	{
+		"file": "/home/lobinux/Documentos/Repos/gdtv-courses/ObstacleAssault/Source/ObstacleAssault/MovingPlatform.h",
+		"arguments": [
+			"/home/lobinux/.local/share/UnrealEngine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v22_clang-16.0.6-centos7/x86_64-unknown-linux-gnu/bin/clang++",
+			"@/home/lobinux/Documentos/Repos/gdtv-courses/ObstacleAssault/.vscode/compileCommands_ObstacleAssault/ObstacleAssault.1.rsp"
+		],
+		"directory": "/home/lobinux/.local/share/UnrealEngine/Engine/Source"
+	},
+	{
+		"file": "/home/lobinux/Documentos/Repos/gdtv-courses/ObstacleAssault/Source/ObstacleAssault/ObstacleAssault.Build.cs",
+		"arguments": [
+			"/home/lobinux/.local/share/UnrealEngine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v22_clang-16.0.6-centos7/x86_64-unknown-linux-gnu/bin/clang++",
+			"@/home/lobinux/Documentos/Repos/gdtv-courses/ObstacleAssault/.vscode/compileCommands_ObstacleAssault/ObstacleAssault.1.rsp"
+		],
+		"directory": "/home/lobinux/.local/share/UnrealEngine/Engine/Source"
+	},
+	{
+		"file": "/home/lobinux/Documentos/Repos/gdtv-courses/ObstacleAssault/Source/ObstacleAssault/ObstacleAssault.cpp",
+		"arguments": [
+			"/home/lobinux/.local/share/UnrealEngine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v22_clang-16.0.6-centos7/x86_64-unknown-linux-gnu/bin/clang++",
+			"@/home/lobinux/Documentos/Repos/gdtv-courses/ObstacleAssault/.vscode/compileCommands_ObstacleAssault/ObstacleAssault.1.rsp"
+		],
+		"directory": "/home/lobinux/.local/share/UnrealEngine/Engine/Source"
+	},
+	{
+		"file": "/home/lobinux/Documentos/Repos/gdtv-courses/ObstacleAssault/Source/ObstacleAssault/ObstacleAssault.h",
+		"arguments": [
+			"/home/lobinux/.local/share/UnrealEngine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v22_clang-16.0.6-centos7/x86_64-unknown-linux-gnu/bin/clang++",
+			"@/home/lobinux/Documentos/Repos/gdtv-courses/ObstacleAssault/.vscode/compileCommands_ObstacleAssault/ObstacleAssault.1.rsp"
+		],
+		"directory": "/home/lobinux/.local/share/UnrealEngine/Engine/Source"
+	}
+]
