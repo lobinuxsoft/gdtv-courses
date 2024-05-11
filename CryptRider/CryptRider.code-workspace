@@ -1,0 +1,865 @@
+{
+	"folders": [
+		{
+			"name": "CryptRider",
+			"path": "."
+		},
+		{
+			"name": "UE5",
+			"path": "/home/lobinux/.local/share/UnrealEngine"
+		}
+	],
+	"settings": {
+		"typescript.tsc.autoDetect": "off",
+		"npm.autoDetect": "off"
+	},
+	"extensions": {
+		"recommendations": [
+			"ms-vscode.cpptools",
+			"ms-dotnettools.csharp"
+		]
+	},
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "CryptRider Linux Debug Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRider",
+					"Linux",
+					"Debug",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRider Linux Debug Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRider",
+					"Linux",
+					"Debug",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"CryptRider Linux Debug Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRider Linux Debug Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRider",
+					"Linux",
+					"Debug",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRider Linux DebugGame Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRider",
+					"Linux",
+					"DebugGame",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRider Linux DebugGame Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRider",
+					"Linux",
+					"DebugGame",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"CryptRider Linux DebugGame Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRider Linux DebugGame Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRider",
+					"Linux",
+					"DebugGame",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRider Linux Development Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRider",
+					"Linux",
+					"Development",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRider Linux Development Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRider",
+					"Linux",
+					"Development",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"CryptRider Linux Development Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRider Linux Development Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRider",
+					"Linux",
+					"Development",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRider Linux Test Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRider",
+					"Linux",
+					"Test",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRider Linux Test Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRider",
+					"Linux",
+					"Test",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"CryptRider Linux Test Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRider Linux Test Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRider",
+					"Linux",
+					"Test",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRider Linux Shipping Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRider",
+					"Linux",
+					"Shipping",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRider Linux Shipping Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRider",
+					"Linux",
+					"Shipping",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"CryptRider Linux Shipping Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRider Linux Shipping Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRider",
+					"Linux",
+					"Shipping",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRider LinuxArm64 Debug Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRider",
+					"LinuxArm64",
+					"Debug",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRider LinuxArm64 Debug Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRider",
+					"LinuxArm64",
+					"Debug",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"CryptRider LinuxArm64 Debug Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRider LinuxArm64 Debug Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRider",
+					"LinuxArm64",
+					"Debug",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRider LinuxArm64 DebugGame Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRider",
+					"LinuxArm64",
+					"DebugGame",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRider LinuxArm64 DebugGame Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRider",
+					"LinuxArm64",
+					"DebugGame",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"CryptRider LinuxArm64 DebugGame Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRider LinuxArm64 DebugGame Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRider",
+					"LinuxArm64",
+					"DebugGame",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRider LinuxArm64 Development Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRider",
+					"LinuxArm64",
+					"Development",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRider LinuxArm64 Development Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRider",
+					"LinuxArm64",
+					"Development",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"CryptRider LinuxArm64 Development Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRider LinuxArm64 Development Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRider",
+					"LinuxArm64",
+					"Development",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRider LinuxArm64 Test Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRider",
+					"LinuxArm64",
+					"Test",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRider LinuxArm64 Test Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRider",
+					"LinuxArm64",
+					"Test",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"CryptRider LinuxArm64 Test Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRider LinuxArm64 Test Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRider",
+					"LinuxArm64",
+					"Test",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRider LinuxArm64 Shipping Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRider",
+					"LinuxArm64",
+					"Shipping",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRider LinuxArm64 Shipping Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRider",
+					"LinuxArm64",
+					"Shipping",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"CryptRider LinuxArm64 Shipping Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRider LinuxArm64 Shipping Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRider",
+					"LinuxArm64",
+					"Shipping",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRiderEditor Linux Debug Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRiderEditor",
+					"Linux",
+					"Debug",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRiderEditor Linux Debug Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRiderEditor",
+					"Linux",
+					"Debug",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"CryptRiderEditor Linux Debug Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRiderEditor Linux Debug Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRiderEditor",
+					"Linux",
+					"Debug",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRiderEditor Linux DebugGame Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRiderEditor",
+					"Linux",
+					"DebugGame",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRiderEditor Linux DebugGame Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRiderEditor",
+					"Linux",
+					"DebugGame",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"CryptRiderEditor Linux DebugGame Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRiderEditor Linux DebugGame Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRiderEditor",
+					"Linux",
+					"DebugGame",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRiderEditor Linux Development Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRiderEditor",
+					"Linux",
+					"Development",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRiderEditor Linux Development Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRiderEditor",
+					"Linux",
+					"Development",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"CryptRiderEditor Linux Development Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			},
+			{
+				"label": "CryptRiderEditor Linux Development Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"CryptRiderEditor",
+					"Linux",
+					"Development",
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/lobinux/.local/share/UnrealEngine"
+				}
+			}
+		]
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "Launch CryptRider (Debug)",
+				"request": "launch",
+				"program": "/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/Binaries/Linux/UnrealGame-Linux-Debug",
+				"preLaunchTask": "CryptRider Linux Debug Build",
+				"args": [
+				],
+				"cwd": "/home/lobinux/.local/share/UnrealEngine",
+				"type": "cppdbg",
+				"visualizerFile": "/home/lobinux/.local/share/UnrealEngine/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true
+			},
+			{
+				"name": "Launch CryptRider (DebugGame)",
+				"request": "launch",
+				"program": "/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/Binaries/Linux/UnrealGame-Linux-DebugGame",
+				"preLaunchTask": "CryptRider Linux DebugGame Build",
+				"args": [
+				],
+				"cwd": "/home/lobinux/.local/share/UnrealEngine",
+				"type": "cppdbg",
+				"visualizerFile": "/home/lobinux/.local/share/UnrealEngine/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true
+			},
+			{
+				"name": "Launch CryptRider (Development)",
+				"request": "launch",
+				"program": "/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/Binaries/Linux/UnrealGame",
+				"preLaunchTask": "CryptRider Linux Development Build",
+				"args": [
+				],
+				"cwd": "/home/lobinux/.local/share/UnrealEngine",
+				"type": "cppdbg",
+				"visualizerFile": "/home/lobinux/.local/share/UnrealEngine/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true
+			},
+			{
+				"name": "Launch CryptRider (Test)",
+				"request": "launch",
+				"program": "/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/Binaries/Linux/UnrealGame-Linux-Test",
+				"preLaunchTask": "CryptRider Linux Test Build",
+				"args": [
+				],
+				"cwd": "/home/lobinux/.local/share/UnrealEngine",
+				"type": "cppdbg",
+				"visualizerFile": "/home/lobinux/.local/share/UnrealEngine/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true
+			},
+			{
+				"name": "Launch CryptRider (Shipping)",
+				"request": "launch",
+				"program": "/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/Binaries/Linux/UnrealGame-Linux-Shipping",
+				"preLaunchTask": "CryptRider Linux Shipping Build",
+				"args": [
+				],
+				"cwd": "/home/lobinux/.local/share/UnrealEngine",
+				"type": "cppdbg",
+				"visualizerFile": "/home/lobinux/.local/share/UnrealEngine/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true
+			},
+			{
+				"name": "Launch CryptRiderEditor (Debug)",
+				"request": "launch",
+				"program": "/home/lobinux/.local/share/UnrealEngine/Engine/Binaries/Linux/UnrealEditor-Linux-Debug",
+				"preLaunchTask": "CryptRiderEditor Linux Debug Build",
+				"args": [
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject"
+				],
+				"cwd": "/home/lobinux/.local/share/UnrealEngine",
+				"type": "cppdbg",
+				"visualizerFile": "/home/lobinux/.local/share/UnrealEngine/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true
+			},
+			{
+				"name": "Launch CryptRiderEditor (DebugGame)",
+				"request": "launch",
+				"program": "/home/lobinux/.local/share/UnrealEngine/Engine/Binaries/Linux/UnrealEditor-Linux-DebugGame",
+				"preLaunchTask": "CryptRiderEditor Linux DebugGame Build",
+				"args": [
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject"
+				],
+				"cwd": "/home/lobinux/.local/share/UnrealEngine",
+				"type": "cppdbg",
+				"visualizerFile": "/home/lobinux/.local/share/UnrealEngine/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true
+			},
+			{
+				"name": "Launch CryptRiderEditor (Development)",
+				"request": "launch",
+				"program": "/home/lobinux/.local/share/UnrealEngine/Engine/Binaries/Linux/UnrealEditor",
+				"preLaunchTask": "CryptRiderEditor Linux Development Build",
+				"args": [
+					"/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject"
+				],
+				"cwd": "/home/lobinux/.local/share/UnrealEngine",
+				"type": "cppdbg",
+				"visualizerFile": "/home/lobinux/.local/share/UnrealEngine/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true
+			},
+			{
+				"name": "Generate Project Files",
+				"type": "coreclr",
+				"request": "launch",
+				"preLaunchTask": "UnrealBuildTool Linux Development Build",
+				"program": "/home/lobinux/.local/share/UnrealEngine/Engine/Build/BatchFiles/RunUBT.bat",
+				"args": [
+					"-projectfiles",
+					"-vscode",
+					"-project=/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/CryptRider.uproject",
+					"-game",
+					"-engine",
+					"-dotnet"
+				],
+				"console": "internalConsole",
+				"internalConsoleOptions": "openOnSessionStart",
+				"stopAtEntry": false,
+				"cwd": "/home/lobinux/.local/share/UnrealEngine"
+			}
+		]
+	}
+}

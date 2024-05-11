@@ -1,0 +1,28 @@
+{
+	"configurations": [
+		{
+			"name": "CryptRiderEditor Editor Linux Development (CryptRider)",
+			"compilerPath": "/home/lobinux/.local/share/UnrealEngine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v22_clang-16.0.6-centos7/x86_64-unknown-linux-gnu/bin/clang++",
+			"compilerArgs": [
+				"-isysroot",
+				"/home/lobinux/.local/share/UnrealEngine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v22_clang-16.0.6-centos7/x86_64-unknown-linux-gnu"
+			],
+			"cStandard": "c17",
+			"cppStandard": "c++20",
+			"intelliSenseMode": "clang-x64",
+			"compileCommands": "/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/.vscode/compileCommands_CryptRider.json"
+		},
+		{
+			"name": "Linux",
+			"compilerPath": "/home/lobinux/.local/share/UnrealEngine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v22_clang-16.0.6-centos7/x86_64-unknown-linux-gnu/bin/clang++",
+			"compilerArgs": [
+				"-isysroot",
+				"/home/lobinux/.local/share/UnrealEngine/Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v22_clang-16.0.6-centos7/x86_64-unknown-linux-gnu"
+			],
+			"cStandard": "c17",
+			"cppStandard": "c++20",
+			"intelliSenseMode": "clang-x64",
+			"compileCommands": "/home/lobinux/Documentos/Repos/gdtv-courses/CryptRider/.vscode/compileCommands_Default.json"
+		}
+	]
+}
