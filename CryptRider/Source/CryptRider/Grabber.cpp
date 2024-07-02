@@ -3,6 +3,7 @@
 
 #include "Grabber.h"
 
+#include "EnhancedInputComponent.h"
 #include "Math/UnitConversion.h"
 
 // Sets default values for this component's properties
