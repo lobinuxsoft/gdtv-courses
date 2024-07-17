@@ -34,7 +34,10 @@ void UGrabber::BeginPlay()
 			Subsystem->AddMappingContext(GrabberMappingContext, 1);
 
 		if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerController->InputComponent))
-			EnhancedInputComponent->BindAction(GrabAction, ETriggerEvent::Canceled, this, &UGrabber::Release);
+		{
+			EnhancedInputComponent->BindAction(GrabAction, ETriggerEvent::Started, this, &UGrabber::StartGrab);
+			EnhancedInputComponent->BindAction(GrabAction, ETriggerEvent::Completed, this, &UGrabber::EndGrab);
+		}
 	}
 }
 
@@ -65,7 +68,15 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 	}
 }
 
-void UGrabber::Release()
+void UGrabber::StartGrab()
+{
+	if(GEngine)
+		GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Green, TEXT("Start grabber"));
+	
+	UE_LOG(LogTemp, Display, TEXT("Start grabber"));
+}
+
+void UGrabber::EndGrab()
 {
 	if(GEngine)
 		GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Yellow, TEXT("Released grabber"));
