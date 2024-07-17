@@ -3,7 +3,9 @@
 
 #include "Grabber.h"
 
+#include "CryptRiderCharacter.h"
 #include "EnhancedInputComponent.h"
+#include "EnhancedInputSubsystems.h"
 #include "Math/UnitConversion.h"
 
 // Sets default values for this component's properties
@@ -22,7 +24,18 @@ void UGrabber::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// ...
+	// Set up inputs for this component
+	ACryptRiderCharacter* Character = Cast<ACryptRiderCharacter>(GetOwner());
+
+	// Set up action bindings
+	if (APlayerController* PlayerController = Cast<APlayerController>(Character->GetController()))
+	{
+		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer()))
+			Subsystem->AddMappingContext(GrabberMappingContext, 1);
+
+		if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerController->InputComponent))
+			EnhancedInputComponent->BindAction(GrabAction, ETriggerEvent::Canceled, this, &UGrabber::Release);
+	}
 }
 
 
@@ -50,4 +63,12 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 		DrawDebugLine(GetWorld(), StartPoint, EndPoint, FColor::Red);
 		DrawDebugSphere(GetWorld(), EndPoint, GrabRadius, 16, FColor::Red);
 	}
+}
+
+void UGrabber::Release()
+{
+	if(GEngine)
+		GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Yellow, TEXT("Released grabber"));
+	
+	UE_LOG(LogTemp, Display, TEXT("Released grabber"));
 }
