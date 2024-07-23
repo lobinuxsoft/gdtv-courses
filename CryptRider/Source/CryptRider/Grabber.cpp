@@ -35,8 +35,8 @@ void UGrabber::BeginPlay()
 
 		if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerController->InputComponent))
 		{
-			EnhancedInputComponent->BindAction(GrabAction, ETriggerEvent::Started, this, &UGrabber::StartGrab);
-			EnhancedInputComponent->BindAction(GrabAction, ETriggerEvent::Completed, this, &UGrabber::EndGrab);
+			EnhancedInputComponent->BindAction(GrabAction, ETriggerEvent::Started, this, &UGrabber::Grab);
+			EnhancedInputComponent->BindAction(GrabAction, ETriggerEvent::Completed, this, &UGrabber::Release);
 		}
 	}
 }
@@ -46,7 +46,10 @@ void UGrabber::BeginPlay()
 void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+}
 
+void UGrabber::Grab()
+{
 	FVector StartPoint = GetComponentLocation();
 	FVector EndPoint = StartPoint + GetForwardVector() * MaxGrabDistance;
 
@@ -59,6 +62,9 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 		DrawDebugLine(GetWorld(), StartPoint, HitResult.ImpactPoint, FColor::Green);
 		DrawDebugSphere(GetWorld(), HitResult.ImpactPoint, GrabRadius, 16, FColor::Green);
 
+		if(GEngine)
+			GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Yellow, TEXT("GRAB"));
+		
 		UE_LOG(LogTemp, Display, TEXT("Hit Actor Name: %s"), *HitResult.GetActor()->GetName());
 	}
 	else
@@ -68,18 +74,10 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 	}
 }
 
-void UGrabber::StartGrab()
+void UGrabber::Release()
 {
 	if(GEngine)
-		GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Green, TEXT("Start grabber"));
-	
-	UE_LOG(LogTemp, Display, TEXT("Start grabber"));
-}
-
-void UGrabber::EndGrab()
-{
-	if(GEngine)
-		GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Yellow, TEXT("Released grabber"));
+		GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Yellow, TEXT("RELEASE"));
 	
 	UE_LOG(LogTemp, Display, TEXT("Released grabber"));
 }
