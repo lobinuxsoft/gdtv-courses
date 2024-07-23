@@ -63,9 +63,12 @@ void UGrabber::Grab()
 		DrawDebugSphere(GetWorld(), HitResult.ImpactPoint, GrabRadius, 16, FColor::Green);
 
 		if(GEngine)
-			GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Yellow, TEXT("GRAB"));
-		
-		UE_LOG(LogTemp, Display, TEXT("Hit Actor Name: %s"), *HitResult.GetActor()->GetName());
+			GEngine->AddOnScreenDebugMessage(
+				-1,
+				3.0f,
+				FColor::Yellow,
+				FString::Printf(TEXT("Hit Actor Name: %s"), *HitResult.GetActor()->GetName())
+				);
 	}
 	else
 	{
@@ -78,6 +81,4 @@ void UGrabber::Release()
 {
 	if(GEngine)
 		GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Yellow, TEXT("RELEASE"));
-	
-	UE_LOG(LogTemp, Display, TEXT("Released grabber"));
 }
