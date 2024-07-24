@@ -1,12 +1,11 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "Grabber.h"
 
 #include "CryptRiderCharacter.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
-#include "Math/UnitConversion.h"
+#include "PhysicsEngine/PhysicsHandleComponent.h"
 
 // Sets default values for this component's properties
 UGrabber::UGrabber()
@@ -39,6 +38,11 @@ void UGrabber::BeginPlay()
 			EnhancedInputComponent->BindAction(GrabAction, ETriggerEvent::Completed, this, &UGrabber::Release);
 		}
 	}
+
+	UPhysicsHandleComponent* PhysicsHandle = GetOwner()->FindComponentByClass<UPhysicsHandleComponent>();
+	
+	if (PhysicsHandle && GEngine)
+		GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Cyan, FString::Printf(TEXT("Hit Actor Name: %s"), *PhysicsHandle->GetName()));
 }
 
 
@@ -62,13 +66,13 @@ void UGrabber::Grab()
 		DrawDebugLine(GetWorld(), StartPoint, HitResult.ImpactPoint, FColor::Green);
 		DrawDebugSphere(GetWorld(), HitResult.ImpactPoint, GrabRadius, 16, FColor::Green);
 
-		if(GEngine)
+		if (GEngine)
 			GEngine->AddOnScreenDebugMessage(
 				-1,
 				3.0f,
 				FColor::Yellow,
 				FString::Printf(TEXT("Hit Actor Name: %s"), *HitResult.GetActor()->GetName())
-				);
+			);
 	}
 	else
 	{
@@ -79,6 +83,6 @@ void UGrabber::Grab()
 
 void UGrabber::Release()
 {
-	if(GEngine)
+	if (GEngine)
 		GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Yellow, TEXT("RELEASE"));
 }
