@@ -56,15 +56,18 @@ void UGrabber::Grab()
 {
 	FVector StartPoint = GetComponentLocation();
 	FVector EndPoint = StartPoint + GetForwardVector() * MaxGrabDistance;
-
+	DrawDebugLine(GetWorld(), StartPoint, EndPoint, FColor::Red, false, 5);
+	DrawDebugSphere(GetWorld(), EndPoint, 10, 10, FColor::Blue, false, 5);
+	
 	FCollisionShape Sphere = FCollisionShape::MakeSphere(GrabRadius);
 	FHitResult HitResult;
 	bool HasHit = GetWorld()->SweepSingleByChannel(HitResult, StartPoint, EndPoint, FQuat::Identity, ECC_GameTraceChannel2, Sphere);
 
 	if (HasHit)
 	{
-		DrawDebugLine(GetWorld(), StartPoint, HitResult.ImpactPoint, FColor::Green);
-		DrawDebugSphere(GetWorld(), HitResult.ImpactPoint, GrabRadius, 16, FColor::Green);
+		DrawDebugLine(GetWorld(), HitResult.TraceStart, HitResult.TraceEnd, FColor::Green, false, 5);
+		DrawDebugSphere(GetWorld(), HitResult.ImpactPoint, 10, 10, FColor::Green, false, 5);
+		DrawDebugSphere(GetWorld(), HitResult.Location, GrabRadius, 10, FColor::Yellow, false, 5);
 
 		if (GEngine)
 			GEngine->AddOnScreenDebugMessage(
@@ -73,11 +76,6 @@ void UGrabber::Grab()
 				FColor::Yellow,
 				FString::Printf(TEXT("Hit Actor Name: %s"), *HitResult.GetActor()->GetName())
 			);
-	}
-	else
-	{
-		DrawDebugLine(GetWorld(), StartPoint, EndPoint, FColor::Red);
-		DrawDebugSphere(GetWorld(), EndPoint, GrabRadius, 16, FColor::Red);
 	}
 }
 
