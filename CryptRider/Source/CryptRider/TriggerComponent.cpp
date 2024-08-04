@@ -14,19 +14,29 @@ void UTriggerComponent::BeginPlay()
 void UTriggerComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-	
+
+	if(AActor* Actor = GetAcceptableActor())
+	{
+		if( UPrimitiveComponent* Component = Cast<UPrimitiveComponent>(Actor->GetRootComponent()))
+			Component->SetSimulatePhysics(false);
+		
+		Actor->AttachToComponent(this->GetAttachParent(), FAttachmentTransformRules::SnapToTargetIncludingScale, "Socket");
+		Mover->SetShouldMove(true);
+	}
+	else
+		Mover->SetShouldMove(false);
+}
+
+void UTriggerComponent::SetMover(UMover* NewMover) { Mover = NewMover; }
+
+AActor* UTriggerComponent::GetAcceptableActor() const
+{
 	TArray<AActor*> Actors;
 	GetOverlappingActors(Actors);
-	
-	if (Actors.Num() > 0)
-	{
-		for (int i = 0; i < Actors.Num(); ++i)
-		{
-			if(GEngine)
-			{
-				FString message = FString::Printf(TEXT("Actor: %s"), *Actors[i]->GetActorNameOrLabel());
-				GEngine->AddOnScreenDebugMessage(-1, 1, FColor::Orange, message);
-			}
-		}
-	}
+
+	for (AActor* Actor : Actors)
+		if (Actor->ActorHasTag(TargetTag) && !Actor->ActorHasTag("Grabbed"))
+			return Actor;
+
+	return nullptr;
 }
