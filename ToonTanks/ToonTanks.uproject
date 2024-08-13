@@ -17,10 +17,6 @@
 		{
 			"Name": "CLionSourceCodeAccess",
 			"Enabled": false
-		},
-		{
-			"Name": "VisualStudioSourceCodeAccess",
-			"Enabled": false
 		}
 	]
 }
