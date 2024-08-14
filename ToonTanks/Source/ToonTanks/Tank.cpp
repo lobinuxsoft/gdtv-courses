@@ -31,9 +31,5 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 void ATank::Move(const FInputActionValue& Value)
 {
-	if(GEngine)
-	{
-		FString message = FString::Printf(TEXT("Move input: %f"), Value.Get<float>());
-		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Blue, message);
-	}
+	AddActorLocalOffset(FVector::ForwardVector * Value.Get<float>());
 }
