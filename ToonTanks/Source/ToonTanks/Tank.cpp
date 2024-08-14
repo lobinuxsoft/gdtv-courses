@@ -3,6 +3,7 @@
 
 #include "Tank.h"
 
+#include "EnhancedInputComponent.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 
@@ -15,4 +16,24 @@ ATank::ATank()
 
 	CameraComp = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera Component"));
 	CameraComp->SetupAttachment(SpringArmComp);
+}
+
+void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+{
+	Super::SetupPlayerInputComponent(PlayerInputComponent);
+
+	if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerInputComponent))
+	{
+		// Moving
+		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ATank::Move);
+	}
+}
+
+void ATank::Move(const FInputActionValue& Value)
+{
+	if(GEngine)
+	{
+		FString message = FString::Printf(TEXT("Move input: %f"), Value.Get<float>());
+		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Blue, message);
+	}
 }

@@ -6,6 +6,11 @@
 #include "BasePawn.h"
 #include "Tank.generated.h"
 
+struct FInputActionValue;
+class UCameraComponent;
+class USpringArmComponent;
+class UInputAction;
+
 /**
  * 
  */
@@ -16,11 +21,22 @@ class TOONTANKS_API ATank : public ABasePawn
 
 public:
 	ATank();
+	
+	// Called to bind functionality to input
+	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
 
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
-	class USpringArmComponent* SpringArmComp;
+	USpringArmComponent* SpringArmComp;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
-	class UCameraComponent* CameraComp;
+	UCameraComponent* CameraComp;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Inputs", meta = (AllowPrivateAccess = "true"))
+	UInputAction* MoveAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Inputs", meta = (AllowPrivateAccess = "true"))
+	UInputAction* TurnAction;
+	
+	void Move(const FInputActionValue& Value);
 };
