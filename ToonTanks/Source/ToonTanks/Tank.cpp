@@ -6,6 +6,7 @@
 #include "EnhancedInputComponent.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "Kismet/GameplayStatics.h"
 
 ATank::ATank()
 {
@@ -31,5 +32,5 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 void ATank::Move(const FInputActionValue& Value)
 {
-	AddActorLocalOffset(FVector::ForwardVector * Value.Get<float>());
+	AddActorLocalOffset(FVector::ForwardVector * Value.Get<float>() * MoveSpeed * UGameplayStatics::GetWorldDeltaSeconds(this));
 }
