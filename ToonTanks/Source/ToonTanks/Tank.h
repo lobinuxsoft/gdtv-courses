@@ -25,6 +25,13 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
 
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
+
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	USpringArmComponent* SpringArmComp;
@@ -50,4 +57,8 @@ private:
 	void Move(const FInputActionValue& Value);
 
 	void Turn(const FInputActionValue& Value);
+	
+	void TurretRotation(const FInputActionValue& Value);
+
+	APlayerController* PlayerControllerRef;
 };
