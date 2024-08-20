@@ -53,6 +53,9 @@ private:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Inputs", meta = (AllowPrivateAccess = "true"))
 	UInputAction* RotateTurretAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Inputs", meta = (AllowPrivateAccess = "true"))
+	UInputAction* FireAction;
 	
 	void Move(const FInputActionValue& Value);
 
