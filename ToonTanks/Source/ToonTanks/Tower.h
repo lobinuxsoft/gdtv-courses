@@ -16,17 +16,20 @@ class TOONTANKS_API ATower : public ABasePawn
 	GENERATED_BODY()
 
 public:
-	ATower();
-
-private:
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Combat", meta = (AllowPrivateAccess = "true"))
-	float FireRange = 400.f;
-	
-	ATank* Tank;
+	virtual void Tick(float DeltaSeconds) override;
 	
 protected:
 	virtual void BeginPlay() override;
+
+private:
+	ATank* Tank;
 	
-public:
-	virtual void Tick(float DeltaSeconds) override;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Combat", meta = (AllowPrivateAccess = "true"))
+	float FireRange = 400.f;
+
+	FTimerHandle FireRateTimerHandle;
+	float FireRate = 2.f;
+	void CheckFireCondition();
+
+	bool InFireRange();
 };
