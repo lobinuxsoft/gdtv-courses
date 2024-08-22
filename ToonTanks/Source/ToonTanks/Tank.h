@@ -64,4 +64,6 @@ private:
 	void TurretRotation(const FInputActionValue& Value);
 
 	APlayerController* PlayerControllerRef;
+
+	FVector TurretDir;
 };

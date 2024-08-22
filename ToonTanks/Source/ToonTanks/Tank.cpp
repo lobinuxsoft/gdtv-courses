@@ -17,6 +17,8 @@ ATank::ATank()
 
 	CameraComp = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera Component"));
 	CameraComp->SetupAttachment(SpringArmComp);
+
+	TurretDir = GetActorForwardVector();
 }
 
 void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -36,14 +38,16 @@ void ATank::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if(PlayerControllerRef)
-	{
-		FHitResult HitResult;
-		PlayerControllerRef->GetHitResultUnderCursor(ECC_Visibility, false, HitResult);
-		DrawDebugSphere(GetWorld(), HitResult.ImpactPoint, 10, 12, FColor::Emerald, false, -1);
+	// if(PlayerControllerRef)
+	// {
+	// 	FHitResult HitResult;
+	// 	PlayerControllerRef->GetHitResultUnderCursor(ECC_Visibility, false, HitResult);
+	// 	DrawDebugSphere(GetWorld(), HitResult.ImpactPoint, 10, 12, FColor::Emerald, false, -1);
+	//
+	// 	RotateTurret(HitResult.ImpactPoint);
+	// }
 
-		RotateTurret(HitResult.ImpactPoint);
-	}
+	DrawDebugDirectionalArrow(GetWorld(), GetActorLocation(), GetActorLocation() + TurretDir * 250, 50, FColor::Green);
 }
 
 void ATank::BeginPlay()
@@ -67,10 +71,14 @@ void ATank::Turn(const FInputActionValue& Value)
 
 void ATank::TurretRotation(const FInputActionValue& Value)
 {
-	// if(APlayerController* PlayerController = Cast<APlayerController>(GetController()))
-	// {
-	// 	FHitResult HitResult;
-	// 	PlayerController->GetHitResultAtScreenPosition(Value.Get<FVector2d>() * 100, ECC_Visibility, false, HitResult);
-	// 	DrawDebugSphere(GetWorld(), HitResult.ImpactPoint, 10, 12, FColor::Red, false, -1);
-	// }
+	FVector2D InputValue = Value.Get<FVector2d>();
+
+	FVector Forward = FVector::VectorPlaneProject(CameraComp->GetForwardVector(), FVector::UpVector);
+	FVector Right = FVector::VectorPlaneProject(CameraComp->GetRightVector(), FVector::UpVector);
+	FVector TempDir = Forward * InputValue.Y + Right * InputValue.X;
+
+	if(TempDir.SquaredLength() > 0)
+		TurretDir = TempDir.GetSafeNormal();
+
+	RotateTurret(GetActorLocation() + TurretDir * 250);
 }
