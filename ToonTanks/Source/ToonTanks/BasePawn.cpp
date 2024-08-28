@@ -30,6 +30,8 @@ void ABasePawn::RotateTurret(FVector LookAtTarget, float InterpSpeed)
 	FVector ToTarget = LookAtTarget - TurretMesh->GetComponentLocation();
 	FRotator LookAtRotation = FRotator(0.f, ToTarget.Rotation().Yaw, 0.f);
 	TurretMesh->SetWorldRotation(FMath::RInterpTo(TurretMesh->GetComponentRotation(), LookAtRotation, UGameplayStatics::GetWorldDeltaSeconds(this), InterpSpeed));
+
+	DrawDebugDirectionalArrow(GetWorld(), GetActorLocation(), LookAtTarget, 50, FColor::Green);
 }
 
 void ABasePawn::Fire()

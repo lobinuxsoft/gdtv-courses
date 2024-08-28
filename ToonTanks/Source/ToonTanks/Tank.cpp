@@ -46,8 +46,6 @@ void ATank::Tick(float DeltaTime)
 	//
 	// 	RotateTurret(HitResult.ImpactPoint);
 	// }
-
-	DrawDebugDirectionalArrow(GetWorld(), GetActorLocation(), GetActorLocation() + TurretDir * 250, 50, FColor::Green);
 }
 
 void ATank::BeginPlay()
@@ -80,5 +78,12 @@ void ATank::TurretRotation(const FInputActionValue& Value)
 	if(TempDir.SquaredLength() > 0)
 		TurretDir = TempDir.GetSafeNormal();
 
-	RotateTurret(GetActorLocation() + TurretDir * 250);
+	FVector2D ScreenPos = FVector2D::Zero();
+	UGameplayStatics::ProjectWorldToScreen(PlayerControllerRef,GetActorLocation() + TurretDir * 250, ScreenPos);
+
+	FHitResult HitResult;
+	PlayerControllerRef->GetHitResultAtScreenPosition(ScreenPos, ECC_Visibility, false, HitResult);
+	DrawDebugSphere(GetWorld(), HitResult.ImpactPoint, 10, 12, FColor::Red, false, -1);
+	
+	RotateTurret(HitResult.ImpactPoint);
 }
