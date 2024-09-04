@@ -83,7 +83,6 @@ void ATank::TurretRotation(const FInputActionValue& Value)
 
 	FHitResult HitResult;
 	PlayerControllerRef->GetHitResultAtScreenPosition(ScreenPos, ECC_Visibility, false, HitResult);
-	DrawDebugSphere(GetWorld(), HitResult.ImpactPoint, 10, 12, FColor::Red, false, -1);
 	
 	RotateTurret(HitResult.ImpactPoint);
 }
