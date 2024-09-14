@@ -3,6 +3,9 @@
 
 #include "HealthComponent.h"
 
+#include "ToonTanksGameMode.h"
+#include "Kismet/GameplayStatics.h"
+
 
 // Sets default values for this component's properties
 UHealthComponent::UHealthComponent()
@@ -34,4 +37,13 @@ void UHealthComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 
 void UHealthComponent::DamageTaken(AActor* DamagedActor, float Damage, const class UDamageType* DamageType, class AController* InstigatedBy, AActor* DamageCauser)
 {
+	if (Damage <= 0.f) return;
+
+	Health -= Damage;
+
+	if (Health <= 0.f)
+	{
+		if (AToonTanksGameMode* ToonTanksGameMode = Cast<AToonTanksGameMode>(UGameplayStatics::GetGameMode(this)))
+			ToonTanksGameMode->ActorDied(DamagedActor);
+	}
 }

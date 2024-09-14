@@ -48,11 +48,19 @@ void ATank::Tick(float DeltaTime)
 	// }
 }
 
+void ATank::HandleDestruction()
+{
+	Super::HandleDestruction();
+	SetActorHiddenInGame(true);
+	SetActorEnableCollision(false);
+	SetActorTickEnabled(false);
+}
+
 void ATank::BeginPlay()
 {
 	Super::BeginPlay();
 
-	PlayerControllerRef = Cast<APlayerController>(GetController());
+	TankPlayerController = Cast<APlayerController>(GetController());
 }
 
 void ATank::Move(const FInputActionValue& Value)
@@ -79,10 +87,10 @@ void ATank::TurretRotation(const FInputActionValue& Value)
 		TurretDir = TempDir.GetSafeNormal();
 
 	FVector2D ScreenPos = FVector2D::Zero();
-	UGameplayStatics::ProjectWorldToScreen(PlayerControllerRef,GetActorLocation() + TurretDir * 250, ScreenPos);
+	UGameplayStatics::ProjectWorldToScreen(TankPlayerController,GetActorLocation() + TurretDir * 250, ScreenPos);
 
 	FHitResult HitResult;
-	PlayerControllerRef->GetHitResultAtScreenPosition(ScreenPos, ECC_Visibility, false, HitResult);
+	TankPlayerController->GetHitResultAtScreenPosition(ScreenPos, ECC_Visibility, false, HitResult);
 	
 	RotateTurret(HitResult.ImpactPoint);
 }
