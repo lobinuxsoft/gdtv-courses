@@ -6,6 +6,7 @@
 #include "GameFramework/GameModeBase.h"
 #include "ToonTanksGameMode.generated.h"
 
+class AToonTanksPlayerController;
 class ATank;
 
 UCLASS()
@@ -21,4 +22,5 @@ protected:
 	
 private:
 	ATank* Tank;
+	AToonTanksPlayerController* ToonTanksPlayerController;
 };

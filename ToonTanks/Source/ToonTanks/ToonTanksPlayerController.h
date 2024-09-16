@@ -16,7 +16,6 @@ class TOONTANKS_API AToonTanksPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 
-
 protected:
 	/** Input Mapping Context to be used for player input */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
@@ -24,4 +23,7 @@ protected:
 
 protected:
 	virtual void BeginPlay() override;
+
+public:
+	void SetPlayerEnabledState(bool bPlayerEnabled);
 };
