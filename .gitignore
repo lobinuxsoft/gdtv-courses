@@ -2,8 +2,3 @@
 */Builds/
 
 */.vscode/
-
-ToonTanks/ProjectPackaged/
-
-ToonTanks/Plugins/*/Binaries/*
-ToonTanks/Plugins/*/Intermediate/*
