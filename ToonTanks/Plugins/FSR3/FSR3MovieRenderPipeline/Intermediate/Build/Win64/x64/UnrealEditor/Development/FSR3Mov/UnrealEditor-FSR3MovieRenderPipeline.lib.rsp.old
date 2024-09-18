@@ -1,0 +1,12 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UnrealEditor-FSR3MovieRenderPipeline.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"C:\Users\theda\OneDrive\Documentos\Repos\gdtv-courses\ToonTanks\Intermediate\Build\Win64\x64\ToonTanksEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.InclOrderOldest.h.obj"
+"C:\Users\theda\OneDrive\Documentos\Repos\gdtv-courses\ToonTanks\Plugins\FSR3-540\FSR3MovieRenderPipeline\Intermediate\Build\Win64\x64\UnrealEditor\Development\FSR3Mov\Module.FSR3Mov.cpp.obj"
+"C:\Users\theda\OneDrive\Documentos\Repos\gdtv-courses\ToonTanks\Plugins\FSR3-540\FSR3MovieRenderPipeline\Intermediate\Build\Win64\x64\UnrealEditor\Development\FSR3Mov\Default.rc2.res"
+/OUT:"C:\Users\theda\OneDrive\Documentos\Repos\gdtv-courses\ToonTanks\Plugins\FSR3-540\FSR3MovieRenderPipeline\Intermediate\Build\Win64\x64\UnrealEditor\Development\FSR3Mov\UnrealEditor-FSR3MovieRenderPipeline.lib"
