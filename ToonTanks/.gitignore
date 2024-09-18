@@ -48,7 +48,6 @@ SourceArt/**/*.tga
 # Binary Files
 Binaries/*
 Plugins/*/Binaries/*
-!Plugins/FSR3
 
 # Builds
 Build/*
@@ -76,4 +75,3 @@ DerivedDataCache/*
 
 .idea
 *.vscode
-
