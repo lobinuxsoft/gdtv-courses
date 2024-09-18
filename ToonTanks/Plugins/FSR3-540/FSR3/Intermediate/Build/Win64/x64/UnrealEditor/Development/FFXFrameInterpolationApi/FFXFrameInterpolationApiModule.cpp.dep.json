@@ -1,0 +1,14 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\theda\\onedrive\\documentos\\repositorios\\gdtv-courses\\toontanks\\plugins\\fsr3-540\\fsr3\\source\\ffxframeinterpolationapi\\private\\ffxframeinterpolationapimodule.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\users\\theda\\onedrive\\documentos\\repositorios\\gdtv-courses\\toontanks\\intermediate\\build\\win64\\x64\\toontankseditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.inclorderoldest.h.pch",
+        "Includes": [
+            "c:\\users\\theda\\onedrive\\documentos\\repositorios\\gdtv-courses\\toontanks\\plugins\\fsr3-540\\fsr3\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\ffxframeinterpolationapi\\definitions.ffxframeinterpolationapi.h",
+            "c:\\users\\theda\\onedrive\\documentos\\repositorios\\gdtv-courses\\toontanks\\plugins\\fsr3-540\\fsr3\\source\\ffxframeinterpolationapi\\public\\ffxframeinterpolationapimodule.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
