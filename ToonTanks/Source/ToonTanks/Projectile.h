@@ -34,6 +34,18 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	float Damage = 50.f;
 
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	UParticleSystem* HitParticle;
+	
+	UPROPERTY(visibleAnywhere, Category = "Combat")
+	UParticleSystemComponent* TrailParticles;
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	USoundBase* LaunchSound;
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	USoundBase* HitSound;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
