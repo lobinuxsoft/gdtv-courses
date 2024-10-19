@@ -2,6 +2,7 @@
 
 
 #include "ShooterCharacter.h"
+#include "EnhancedInputComponent.h"
 
 // Sets default values
 AShooterCharacter::AShooterCharacter()
@@ -30,5 +31,23 @@ void AShooterCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+	if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerInputComponent))
+	{
+		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AShooterCharacter::Move);
+		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AShooterCharacter::Look);
+		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Started, this, &AShooterCharacter::Jump);
+	}
 }
 
+void AShooterCharacter::Move(const FInputActionValue& Value)
+{
+	FVector2D InputValue = Value.Get<FVector2D>();
+	AddMovementInput(GetActorForwardVector() * InputValue.Y + GetActorRightVector() * InputValue.X);
+}
+
+void AShooterCharacter::Look(const FInputActionValue& Value)
+{
+	FVector2D InputValue = Value.Get<FVector2D>();
+	AddControllerPitchInput(-InputValue.Y);
+	AddControllerYawInput(InputValue.X);
+}
