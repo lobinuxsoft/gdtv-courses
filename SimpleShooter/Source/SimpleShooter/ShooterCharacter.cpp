@@ -48,6 +48,6 @@ void AShooterCharacter::Move(const FInputActionValue& Value)
 void AShooterCharacter::Look(const FInputActionValue& Value)
 {
 	FVector2D InputValue = Value.Get<FVector2D>();
-	AddControllerPitchInput(-InputValue.Y * RotationRate);
-	AddControllerYawInput(InputValue.X * RotationRate);
+	AddControllerPitchInput(-InputValue.Y * RotationRate * GetWorld()->GetDeltaSeconds());
+	AddControllerYawInput(InputValue.X * RotationRate * GetWorld()->GetDeltaSeconds());
 }
