@@ -41,6 +41,7 @@ void AShooterCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AShooterCharacter::Move);
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AShooterCharacter::Look);
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Started, this, &AShooterCharacter::Jump);
+		EnhancedInputComponent->BindAction(ShootAction, ETriggerEvent::Started, this, &AShooterCharacter::Shoot);
 	}
 }
 
@@ -55,4 +56,10 @@ void AShooterCharacter::Look(const FInputActionValue& Value)
 	FVector2D InputValue = Value.Get<FVector2D>();
 	AddControllerPitchInput(-InputValue.Y * RotationRate * GetWorld()->GetDeltaSeconds());
 	AddControllerYawInput(InputValue.X * RotationRate * GetWorld()->GetDeltaSeconds());
+}
+
+void AShooterCharacter::Shoot(const FInputActionValue& Value)
+{
+	if (Gun)
+		Gun->PullTrigger();
 }

@@ -15,6 +15,12 @@ AGun::AGun()
 	Mesh->SetupAttachment(Root);
 }
 
+void AGun::PullTrigger()
+{
+	if (GEngine)
+		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Cyan, TEXT("You've been shot!"));
+}
+
 // Called when the game starts or when spawned
 void AGun::BeginPlay()
 {
