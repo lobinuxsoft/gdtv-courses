@@ -2,6 +2,8 @@
 
 #include "Gun.h"
 
+#include "Kismet/GameplayStatics.h"
+
 // Sets default values
 AGun::AGun()
 {
@@ -17,8 +19,10 @@ AGun::AGun()
 
 void AGun::PullTrigger()
 {
-	if (GEngine)
-		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Cyan, TEXT("You've been shot!"));
+	// if (GEngine)
+	// 	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Cyan, TEXT("You've been shot!"));
+
+	UGameplayStatics::SpawnEmitterAttached(MuzzleFlash, Mesh, TEXT("MuzzleFlashSocket"));
 }
 
 // Called when the game starts or when spawned
