@@ -2,6 +2,7 @@
 
 #include "Gun.h"
 
+#include "Engine/DamageEvents.h"
 #include "Kismet/GameplayStatics.h"
 
 // Sets default values
@@ -32,13 +33,19 @@ void AGun::PullTrigger()
 
 			FVector End = Location + Rotation.Vector() * MaxRange;
 			DrawDebugLine(GetWorld(), Location, End, FColor::Red, false, 1);
-			
+
 			FHitResult HitInfo;
-			
+
 			if (GetWorld()->LineTraceSingleByChannel(HitInfo, Location, End, ECC_GameTraceChannel1))
 			{
 				DrawDebugSphere(GetWorld(), HitInfo.Location, 5, 12, FColor::Red, false, 1);
-				UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ImpactEffect, HitInfo.Location, HitInfo.Normal.Rotation());
+				UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ImpactEffect, HitInfo.ImpactPoint, HitInfo.ImpactNormal.Rotation());
+
+				if (HitInfo.GetActor())
+				{
+					FPointDamageEvent DamageEvent(Damage, HitInfo, HitInfo.ImpactNormal, nullptr);
+					HitInfo.GetActor()->TakeDamage(Damage, DamageEvent, OwnerPawn->GetController(), this);
+				}
 			}
 		}
 	}
