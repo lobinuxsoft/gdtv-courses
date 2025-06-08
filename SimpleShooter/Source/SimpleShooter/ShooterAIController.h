@@ -23,4 +23,8 @@ protected:
 private:
 	UPROPERTY(EditAnywhere)
 	UBehaviorTree* AIBehavior;
+
+	FName StartLocationKey = TEXT("StartLocation");
+	FName PlayerLocationKey = TEXT("PlayerLocation");
+	FName LastKnownPlayerLocationKey = TEXT("LastKnownPlayerLocation");
 };
