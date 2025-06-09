@@ -32,7 +32,6 @@ bool AShooterCharacter::IsDead() const { return Health <= 0; }
 void AShooterCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
 // Called to bind functionality to input
@@ -42,10 +41,10 @@ void AShooterCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 
 	if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerInputComponent))
 	{
-		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AShooterCharacter::Move);
-		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AShooterCharacter::Look);
+		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AShooterCharacter::MoveInput);
+		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AShooterCharacter::LookInput);
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Started, this, &AShooterCharacter::Jump);
-		EnhancedInputComponent->BindAction(ShootAction, ETriggerEvent::Started, this, &AShooterCharacter::Shoot);
+		EnhancedInputComponent->BindAction(ShootAction, ETriggerEvent::Started, this, &AShooterCharacter::ShootInput);
 	}
 }
 
@@ -62,21 +61,26 @@ float AShooterCharacter::TakeDamage(float DamageAmount, struct FDamageEvent cons
 	return DamageToApply;
 }
 
-void AShooterCharacter::Move(const FInputActionValue& Value)
+void AShooterCharacter::Shoot()
+{
+	if (Gun)
+		Gun->PullTrigger();
+}
+
+void AShooterCharacter::MoveInput(const FInputActionValue& Value)
 {
 	FVector2D InputValue = Value.Get<FVector2D>();
 	AddMovementInput(GetActorForwardVector() * InputValue.Y + GetActorRightVector() * InputValue.X);
 }
 
-void AShooterCharacter::Look(const FInputActionValue& Value)
+void AShooterCharacter::LookInput(const FInputActionValue& Value)
 {
 	FVector2D InputValue = Value.Get<FVector2D>();
 	AddControllerPitchInput(-InputValue.Y * RotationRate * GetWorld()->GetDeltaSeconds());
 	AddControllerYawInput(InputValue.X * RotationRate * GetWorld()->GetDeltaSeconds());
 }
 
-void AShooterCharacter::Shoot(const FInputActionValue& Value)
+void AShooterCharacter::ShootInput(const FInputActionValue& Value)
 {
-	if (Gun)
-		Gun->PullTrigger();
+	Shoot();
 }

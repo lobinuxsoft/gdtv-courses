@@ -35,6 +35,8 @@ public:
 
 	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
 
+	void Shoot();
+
 private:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Inputs", meta = (AllowPrivateAccess = "true"))
 	UInputAction* MoveAction;
@@ -64,7 +66,7 @@ private:
 	AGun* Gun;
 	
 	
-	void Move(const FInputActionValue& Value);
-	void Look(const FInputActionValue& Value);
-	void Shoot(const FInputActionValue& Value);
+	void MoveInput(const FInputActionValue& Value);
+	void LookInput(const FInputActionValue& Value);
+	void ShootInput(const FInputActionValue& Value);
 };
