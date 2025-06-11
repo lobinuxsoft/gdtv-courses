@@ -17,9 +17,17 @@ class SIMPLESHOOTER_API ASimpleShooterPlayerController : public APlayerControlle
 	GENERATED_BODY()
 
 protected:
+	virtual void BeginPlay() override;
+	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
 	UInputMappingContext* InputMappingContext;
 
-protected:
-	virtual void BeginPlay() override;
+public:
+	virtual void GameHasEnded(AActor* EndGameFocus = nullptr, bool bIsWinner = false) override;
+
+private:
+	UPROPERTY(EditAnywhere)
+	float RestartDelay = 5;
+
+	FTimerHandle RestartTimer;
 };

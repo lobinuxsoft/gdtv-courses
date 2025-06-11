@@ -7,6 +7,8 @@ void AKillEmAllGameMode::PawnKilled(APawn* PawnKilled)
 {
 	Super::PawnKilled(PawnKilled);
 
-	if (GEngine)
-		GEngine->AddOnScreenDebugMessage(0, 5, FColor::Red, FString::Printf(TEXT("Player: %s is DEAD!!!"), *PawnKilled->GetActorNameOrLabel()));
+	if (APlayerController* PlayerController = Cast<APlayerController>(PawnKilled->GetController()))
+	{
+		PlayerController->GameHasEnded(nullptr, false);
+	}
 }
