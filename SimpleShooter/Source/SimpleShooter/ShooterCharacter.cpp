@@ -4,6 +4,8 @@
 #include "ShooterCharacter.h"
 #include "EnhancedInputComponent.h"
 #include "Gun.h"
+#include "SimpleShooterGameModeBase.h"
+#include "Components/CapsuleComponent.h"
 
 // Sets default values
 AShooterCharacter::AShooterCharacter()
@@ -58,6 +60,18 @@ float AShooterCharacter::TakeDamage(float DamageAmount, struct FDamageEvent cons
 	if (GEngine)
 		GEngine->AddOnScreenDebugMessage(0, 5, FColor::Red, FString::Printf(TEXT("%s Health: %f"), *GetActorNameOrLabel(),Health));
 
+	if (IsDead())
+	{
+		DetachFromControllerPendingDestroy();
+		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		
+		if (ASimpleShooterGameModeBase* GameMode = GetWorld()->GetAuthGameMode<ASimpleShooterGameModeBase>())
+		{
+			GameMode->PawnKilled(this);
+		}
+		
+	}
+	
 	return DamageToApply;
 }
 
