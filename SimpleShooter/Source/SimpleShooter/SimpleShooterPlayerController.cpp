@@ -10,7 +10,8 @@ void ASimpleShooterPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if(UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer()))
+	if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(
+		GetLocalPlayer()))
 		Subsystem->AddMappingContext(InputMappingContext, 0);
 }
 
@@ -18,9 +19,16 @@ void ASimpleShooterPlayerController::GameHasEnded(AActor* EndGameFocus, bool bIs
 {
 	Super::GameHasEnded(EndGameFocus, bIsWinner);
 
-	if (UUserWidget* LoseScreen = CreateWidget(this, LoseScreenClass))
-		LoseScreen->AddToViewport();
-	
+	if (bIsWinner)
+	{
+		if (UUserWidget* WinScreen = CreateWidget(this, WinScreenClass))
+			WinScreen->AddToViewport();
+	}
+	else
+	{
+		if (UUserWidget* LoseScreen = CreateWidget(this, LoseScreenClass))
+			LoseScreen->AddToViewport();
+	}
 	
 	GetWorldTimerManager().SetTimer(RestartTimer, this, &APlayerController::RestartLevel, RestartDelay);
 }
