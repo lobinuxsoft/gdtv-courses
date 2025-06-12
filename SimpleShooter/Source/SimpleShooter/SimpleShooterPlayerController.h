@@ -26,6 +26,10 @@ public:
 	virtual void GameHasEnded(AActor* EndGameFocus = nullptr, bool bIsWinner = false) override;
 
 private:
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<UUserWidget> LoseScreenClass;
+	
 	UPROPERTY(EditAnywhere)
 	float RestartDelay = 5;
 

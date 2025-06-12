@@ -3,6 +3,7 @@
 
 #include "SimpleShooterPlayerController.h"
 #include "EnhancedInputSubsystems.h"
+#include "Blueprint/UserWidget.h"
 #include "Engine/LocalPlayer.h"
 
 void ASimpleShooterPlayerController::BeginPlay()
@@ -17,5 +18,9 @@ void ASimpleShooterPlayerController::GameHasEnded(AActor* EndGameFocus, bool bIs
 {
 	Super::GameHasEnded(EndGameFocus, bIsWinner);
 
+	if (UUserWidget* LoseScreen = CreateWidget(this, LoseScreenClass))
+		LoseScreen->AddToViewport();
+	
+	
 	GetWorldTimerManager().SetTimer(RestartTimer, this, &APlayerController::RestartLevel, RestartDelay);
 }
