@@ -26,7 +26,7 @@ void AGun::PullTrigger()
 	FHitResult HitInfo;
 	if (GunTrace(HitInfo))
 	{
-		DrawDebugSphere(GetWorld(), HitInfo.Location, 5, 12, FColor::Red, false, 1);
+		// DrawDebugSphere(GetWorld(), HitInfo.Location, 5, 12, FColor::Red, false, 1);
 		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ImpactEffect, HitInfo.ImpactPoint, HitInfo.ImpactNormal.Rotation());
 		UGameplayStatics::SpawnSoundAtLocation(GetWorld(), ImpactSound, HitInfo.ImpactPoint);
 
@@ -43,8 +43,8 @@ void AGun::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if (GEngine)
-		GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Cyan, FString::Printf(TEXT("%s"), *GetActorNameOrLabel()));
+	// if (GEngine)
+	// 	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Cyan, FString::Printf(TEXT("%s"), *GetActorNameOrLabel()));
 }
 
 // Called every frame
@@ -60,10 +60,10 @@ bool AGun::GunTrace(FHitResult& Hit) const
 		FVector Location;
 		FRotator Rotation;
 		Controller->GetPlayerViewPoint(Location, Rotation);
-		DrawDebugCamera(GetWorld(), Location, Rotation, 90, 2, FColor::Red, false, 1);
+		// DrawDebugCamera(GetWorld(), Location, Rotation, 90, 2, FColor::Red, false, 1);
 
 		FVector End = Location + Rotation.Vector() * MaxRange;
-		DrawDebugLine(GetWorld(), Location, End, FColor::Red, false, 1);
+		// DrawDebugLine(GetWorld(), Location, End, FColor::Red, false, 1);
 			
 		FCollisionQueryParams Params;
 		Params.AddIgnoredActor(this);

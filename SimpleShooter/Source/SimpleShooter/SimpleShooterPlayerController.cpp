@@ -13,11 +13,16 @@ void ASimpleShooterPlayerController::BeginPlay()
 	if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(
 		GetLocalPlayer()))
 		Subsystem->AddMappingContext(InputMappingContext, 0);
+
+	if ((HUD = CreateWidget(this, HUDClass)))
+		HUD->AddToViewport();
 }
 
 void ASimpleShooterPlayerController::GameHasEnded(AActor* EndGameFocus, bool bIsWinner)
 {
 	Super::GameHasEnded(EndGameFocus, bIsWinner);
+
+	HUD->RemoveFromParent();
 
 	if (bIsWinner)
 	{
@@ -29,6 +34,6 @@ void ASimpleShooterPlayerController::GameHasEnded(AActor* EndGameFocus, bool bIs
 		if (UUserWidget* LoseScreen = CreateWidget(this, LoseScreenClass))
 			LoseScreen->AddToViewport();
 	}
-	
+
 	GetWorldTimerManager().SetTimer(RestartTimer, this, &APlayerController::RestartLevel, RestartDelay);
 }
